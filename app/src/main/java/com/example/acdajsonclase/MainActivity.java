@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.example.acdajsonclase.ui.contactos.ContactosActivity;
 import com.example.acdajsonclase.ui.contactosGSon.ContactosGsonActivity;
 import com.example.acdajsonclase.ui.CreacionJsonActivity;
-import com.example.acdajsonclase.ui.PrimitivaActivity;
+import com.example.acdajsonclase.ui.primitiva.PrimitivaActivity;
 import com.example.acdajsonclase.ui.RetrofitActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

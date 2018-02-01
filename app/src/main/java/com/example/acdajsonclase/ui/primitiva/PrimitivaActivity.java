@@ -1,4 +1,4 @@
-package com.example.acdajsonclase.ui;
+package com.example.acdajsonclase.ui.primitiva;
 
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;

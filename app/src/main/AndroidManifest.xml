@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.PrimitivaActivity" />
+        <activity android:name=".ui.primitiva.PrimitivaActivity" />
         <activity android:name=".ui.contactos.ContactosActivity" />
         <activity android:name=".ui.contactosGSon.ContactosGsonActivity" />
         <activity android:name=".ui.CreacionJsonActivity" />
