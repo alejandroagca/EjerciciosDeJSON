@@ -12,25 +12,19 @@ import android.widget.Toast;
 
 import com.example.acdajsonclase.R;
 import com.example.acdajsonclase.network.RestClient;
-import com.example.acdajsonclase.ui.contactos.Contacto;
-import com.example.acdajsonclase.utils.Analisis;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
 public class ContactosGsonActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
-    private static String WEB = "https://portadaalta.mobi/acceso/contactos.json";
+    private static String WEB = "https://portadaalta.mobi/acceso/contacts.json";
     private Button btnObtenerContactos;
     private ListView lwContactos;
-    ArrayList<Contacto> contactos;
-    ArrayAdapter<Contacto> adapter;
+    ArrayAdapter<Contact> adapter;
     Gson gson;
     Person person;
 
@@ -72,10 +66,12 @@ public class ContactosGsonActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
-                    contactos = Analisis.analizarContactos(response);
+                    gson = new Gson();
+                    person = gson.fromJson(response.toString(), Person.class);
                     mostrar();
-                } catch (JSONException e) {
-                    showError("ERROR: "+statusCode);
+                }
+                catch (Exception e){
+                    showError("ERROR: "+statusCode+ "\n" + e.getMessage());
                 }
                 progreso.dismiss();
 
@@ -84,22 +80,21 @@ public class ContactosGsonActivity extends AppCompatActivity implements View.OnC
     }
 
     private void mostrar() {
-        if (contactos != null) {
+        if (person != null) {
             if (adapter == null) {
-                adapter = new ArrayAdapter<Contacto>(this, android.R.layout.simple_list_item_1, contactos);
+                adapter = new ArrayAdapter<Contact>(this, android.R.layout.simple_list_item_1, person.getContacts());
                 lwContactos.setAdapter(adapter);
-            } else {
-                adapter.clear();
-                adapter.addAll(contactos);
             }
-        } else {
+            else {
+                adapter.clear();
+                adapter.addAll(person.getContacts());
+            }
+        } else
             Toast.makeText(getApplicationContext(), "Error al crear la lista", Toast.LENGTH_SHORT).show();
-        }
     }
-
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        Toast.makeText(this, "Móvil: " + contactos.get(position).getTelefono().getMovil(), Toast.LENGTH_SHORT).show();
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(this, "Móvil: " + person.getContacts().get(position).getPhone().getMobile(), Toast.LENGTH_SHORT).show();
     }
 
     /**
