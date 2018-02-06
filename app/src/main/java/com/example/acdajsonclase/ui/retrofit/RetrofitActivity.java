@@ -1,4 +1,4 @@
-package com.example.acdajsonclase.ui;
+package com.example.acdajsonclase.ui.retrofit;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
