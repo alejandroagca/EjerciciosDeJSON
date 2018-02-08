@@ -59,7 +59,6 @@ public class RetrofitActivity extends AppCompatActivity implements View.OnClickL
                         Toast.LENGTH_LONG).show();
             }
         }));
-
     }
 
     @Override

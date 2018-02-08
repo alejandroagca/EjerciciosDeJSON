@@ -53,6 +53,9 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
         Repo repo = mRepos.get(position);
         holder.txvUser.setText(repo.getName());
         holder.txvDate.setText(repo.getCreatedAt());
+        if (repo.getDescription() != null){
+            holder.txvDescription.setText(repo.getDescription().toString());
+        }
     }
 
     @Override
