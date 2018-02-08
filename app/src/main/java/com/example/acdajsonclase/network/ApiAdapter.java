@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class ApiAdapter {
+
     private static ApiService API_SERVICE;
 
     public static ApiService getApiService() {

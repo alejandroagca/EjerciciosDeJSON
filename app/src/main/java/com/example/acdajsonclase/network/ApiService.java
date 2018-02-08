@@ -1,5 +1,7 @@
 package com.example.acdajsonclase.network;
 
+import com.example.acdajsonclase.ui.retrofit.Repo;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -11,6 +13,8 @@ import retrofit2.http.Path;
  */
 
 public interface ApiService {
+
     @GET("/users/{user}/repos")
     Call<List<Repo>> reposForUser(@Path("user") String user);
+
 }
